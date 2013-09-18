@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <vector>
 #include <cmath>
 using namespace std;
@@ -113,7 +113,7 @@ int hashlinear(string key,int tableSize){
 		hashVal = 37 * hashVal + key[i];
 	}
 	hashVal %= tableSize; 
-	if(hashVal < 0) // ���ҧ�ó�������Ţ�����Թ int ������ѹ���������觤Դź ������Ҩ������ռ��Ѿ���� hash ��ź�� ��Ҩ֧�ŧ complement ��Ѻ�繺ǡ
+	if(hashVal < 0) // มนบางกรณีเมื่อเลขทะลุเกิน int ไปแล้วมันจะเข้าสู่ฝั่งคิดลบ ทำให้อาจทำให้มีผลลัพธ์การ hash เป็นลบได้ เราจึงแปลง complement กลับเป็นบวก
 		hashVal += tableSize;
 	return hashVal;
 }

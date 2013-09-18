@@ -1,4 +1,4 @@
-#include <iostream>
+Ôªø#include <iostream>
 #include <string>
 #include <vector>
 #include <cmath>
@@ -12,7 +12,7 @@ public :
 	int CollusionMax;
 	int CollusionCount;
 	int lastHash;
-	explicit hashTable(int size = 11){// explicit ªÈÕß°—π°“√„™È ≈—∫°—π„π function ∑’Ë¡’ parameter À≈“¬™π‘¥
+	explicit hashTable(int size = 11){// explicit ‡∏õ‡πâ‡∏≠‡∏á‡∏Å‡∏±‡∏ô‡∏Å‡∏≤‡∏£‡πÉ‡∏ä‡πâ‡∏™‡∏•‡∏±‡∏ö‡∏Å‡∏±‡∏ô‡πÉ‡∏ô function ‡∏ó‡∏µ‡πà‡∏°‡∏µ parameter ‡∏´‡∏•‡∏≤‡∏¢‡∏ä‡∏ô‡∏¥‡∏î
 		tablesize = size;
 		numToken  = 0;
 		table = new vector<bst<T>>(size);
@@ -25,10 +25,10 @@ public :
 		numToken = lastHash = CollusionMax = CollusionCount = 0; // reset stat
 		for(int i = 0;i < table->size();i++){
 			node<T> *point = table->at(i).start;
-			if(point->next != nullptr){ //µ√«® Õ∫«Ë“™ËÕßπ—Èπ«Ë“ß„™ËÀ√◊Õ‰¡Ë ∂È“«Ë“ß· ¥ß«Ë“‰¡Ë¡’¢ÈÕ¡Ÿ≈Õ¬ŸËµ—Èß·µË·√°
+			if(point->next != nullptr){ //‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏ß‡πà‡∏≤‡∏ä‡πà‡∏≠‡∏á‡∏ô‡∏±‡πâ‡∏ô‡∏ß‡πà‡∏≤‡∏á‡πÉ‡∏ä‡πà‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà ‡∏ñ‡πâ‡∏≤‡∏ß‡πà‡∏≤‡∏á‡πÅ‡∏™‡∏î‡∏á‡∏ß‡πà‡∏≤‡πÑ‡∏°‡πà‡∏°‡∏µ‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏≠‡∏¢‡∏π‡πà‡∏ï‡∏±‡πâ‡∏á‡πÅ‡∏ï‡πà‡πÅ‡∏£‡∏Å
 				point = point->next;
-				while(point != nullptr){ //«π®π§√∫ chain
-					int index = hashfunc(point->data,tablesize);  // ‡√‘Ë¡∑”°“√„ Ë¢ÈÕ≈ß‰ª„π vector „À¡Ë‚¥¬‡Õ“¡“®“° vector ‡°Ë“ºË“π ¡°“√ hash ‡¥‘¡
+				while(point != nullptr){ //‡∏ß‡∏ô‡∏à‡∏ô‡∏Ñ‡∏£‡∏ö chain
+					int index = hashfunc(point->data,tablesize);  // ‡πÄ‡∏£‡∏¥‡πà‡∏°‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡πÉ‡∏™‡πà‡∏Ç‡πâ‡∏≠‡∏•‡∏á‡πÑ‡∏õ‡πÉ‡∏ô vector ‡πÉ‡∏´‡∏°‡πà‡πÇ‡∏î‡∏¢‡πÄ‡∏≠‡∏≤‡∏°‡∏≤‡∏à‡∏≤‡∏Å vector ‡πÄ‡∏Å‡πà‡∏≤‡∏ú‡πà‡∏≤‡∏ô‡∏™‡∏°‡∏Å‡∏≤‡∏£ hash ‡πÄ‡∏î‡∏¥‡∏°
 					newTable->at(index).add(point->data); 
 					if(index == lastHash)CollusionCount++; //detect Collusion and Count
 					else{
@@ -36,7 +36,7 @@ public :
 							CollusionMax = CollusionCount;
 					}
 					numToken++;
-					point = point->next; // ‡≈◊ËÕπ‰ª‡√◊ËÕ¬Ê ®πÀ¡¥ chain
+					point = point->next; // ‡πÄ‡∏•‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏õ‡πÄ‡∏£‡∏∑‡πà‡∏≠‡∏¢‡πÜ ‡∏à‡∏ô‡∏´‡∏°‡∏î chain
 				}
 			}
 		}
@@ -117,7 +117,7 @@ int hashfunc(string key,int tableSize){
 		hashVal = 37 * hashVal + key[i];
 	}
 	hashVal %= tableSize; 
-	if(hashVal < 0) // ¡π∫“ß°√≥’‡¡◊ËÕ‡≈¢∑–≈ÿ‡°‘π int ‰ª·≈È«¡—π®–‡¢È“ ŸËΩ—Ëß§‘¥≈∫ ∑”„ÀÈÕ“®∑”„ÀÈ¡’º≈≈—æ∏Ï°“√ hash ‡ªÁπ≈∫‰¥È ‡√“®÷ß·ª≈ß complement °≈—∫‡ªÁπ∫«°
+	if(hashVal < 0) // ‡∏°‡∏ô‡∏ö‡∏≤‡∏á‡∏Å‡∏£‡∏ì‡∏µ‡πÄ‡∏°‡∏∑‡πà‡∏≠‡πÄ‡∏•‡∏Ç‡∏ó‡∏∞‡∏•‡∏∏‡πÄ‡∏Å‡∏¥‡∏ô int ‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß‡∏°‡∏±‡∏ô‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤‡∏™‡∏π‡πà‡∏ù‡∏±‡πà‡∏á‡∏Ñ‡∏¥‡∏î‡∏•‡∏ö ‡∏ó‡∏≥‡πÉ‡∏´‡πâ‡∏≠‡∏≤‡∏à‡∏ó‡∏≥‡πÉ‡∏´‡πâ‡∏°‡∏µ‡∏ú‡∏•‡∏•‡∏±‡∏û‡∏ò‡πå‡∏Å‡∏≤‡∏£ hash ‡πÄ‡∏õ‡πá‡∏ô‡∏•‡∏ö‡πÑ‡∏î‡πâ ‡πÄ‡∏£‡∏≤‡∏à‡∏∂‡∏á‡πÅ‡∏õ‡∏•‡∏á complement ‡∏Å‡∏•‡∏±‡∏ö‡πÄ‡∏õ‡πá‡∏ô‡∏ö‡∏ß‡∏Å
 		hashVal += tableSize;
 	return hashVal;
 }

@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "linearHash.h"
 #include <string>
 #include <fstream>
