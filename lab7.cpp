@@ -4,7 +4,7 @@
 #include <string>
 
 using namespace std;
-/*int main() {
+int main() {
 	ifstream file("full.txt");
 	string line;
 	cout << "separate chaining dictation" << endl;
@@ -30,4 +30,4 @@ using namespace std;
 	cout << "number of Token : " << list.getNumToken() << endl;
 	cout << "load factor : " << list.getLoadFactor() << endl;
 	
-}*/
+}
