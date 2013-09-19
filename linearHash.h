@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <cmath>
 using namespace std;
@@ -30,6 +30,19 @@ public:
 		arrsize = size;
 		maxCollusion = 0;
 		list = vector<node<T>>(arrsize);
+	}
+
+	bool remove(T input) {
+		int pos = hashlinear(input,arrsize);
+		while(list.at(pos).info != ACTIVE){
+			pos += 1;
+			pos %= arrsize;
+		}
+		if(input.compare(list.at(pos).data) == 0){
+			list.at(pos).info = DELETED;
+			numToken--;
+			return true;
+		}else return false;
 	}
 
 	bool insert(T data){
@@ -113,7 +126,7 @@ int hashlinear(string key,int tableSize){
 		hashVal = 37 * hashVal + key[i];
 	}
 	hashVal %= tableSize; 
-	if(hashVal < 0) // มนบางกรณีเมื่อเลขทะลุเกิน int ไปแล้วมันจะเข้าสู่ฝั่งคิดลบ ทำให้อาจทำให้มีผลลัพธ์การ hash เป็นลบได้ เราจึงแปลง complement กลับเป็นบวก
+	if(hashVal < 0) // ���ҧ�ó�������Ţ�����Թ int ������ѹ���������觤Դź ������Ҩ������ռ��Ѿ���� hash ��ź�� ��Ҩ֧�ŧ complement ��Ѻ�繺ǡ
 		hashVal += tableSize;
 	return hashVal;
 }
