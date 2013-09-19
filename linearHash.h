@@ -34,7 +34,7 @@ public:
 
 	bool remove(T input) {
 		int pos = hashlinear(input,arrsize);
-		while(list.at(pos).info != ACTIVE){
+		while(list.at(pos).info != ACTIVE && list.at(pos).data != input){
 			pos += 1;
 			pos %= arrsize;
 		}
@@ -86,7 +86,7 @@ public:
 
 	bool search(T data) {
 		int index = hashlinear(data,arrsize);
-		while(list.at(index).info != ACTIVE){
+		while(list.at(index).info != ACTIVE && list.at(index).data != data){
 			index += 1;
 			index %= arrsize;
 		}
