@@ -50,7 +50,7 @@ public:
 			cout << "rehash at " << numToken << endl;
 			rehash();
 		}
-		int pos = findPos(hashlinear(data,arrsize));
+		int pos = findPos(hashlinear(data,arrsize),data);
 		list.at(pos) = node<T>(data,ACTIVE);
 		numToken++;
 		return true;
@@ -96,9 +96,9 @@ public:
 
 	}
 
-	int findPos(int index){
+	int findPos(int index,T input){
 		int collusion = 0;
-		while(list.at(index).info != EMPTY /*&& list.at(index).info != DELETED*/){ // เนื่องจาก findPos
+		while(list.at(index).info == ACTIVE){ // เนื่องจาก findPos
 			index += 1;
 			index %= arrsize;
 			collusion++;
