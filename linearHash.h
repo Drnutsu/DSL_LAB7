@@ -58,7 +58,7 @@ public:
 
 	void rehash(){
 		vector<node<T>> oldList = list;
-		list.resize(nextPrimeLinear(arrsize * 2));
+		list.resize(nextPrimeLinear(arrsize * 2)); 
 		arrsize = list.size();
 		for(int i = 0; i < oldList.size() ; i++){
 			list.at(i).info = EMPTY;
@@ -66,7 +66,7 @@ public:
 
 		numToken = 0;
 		for(int i = 0;i < oldList.size() ;i++){
-			if(oldList.at(i).info == ACTIVE){
+			if(oldList.at(i).info == ACTIVE){ // ตรวจหาช่องที่มีคำ
 				insert(oldList.at(i).data);
 			}
 		}
@@ -98,7 +98,7 @@ public:
 
 	int findPos(int index){
 		int collusion = 0;
-		while(list.at(index).info != EMPTY && list.at(index).info != DELETED){
+		while(list.at(index).info != EMPTY /*&& list.at(index).info != DELETED*/){ // เนื่องจาก findPos
 			index += 1;
 			index %= arrsize;
 			collusion++;
@@ -113,6 +113,9 @@ public:
 		return (float)numToken/arrsize;
 	}
 
+	int getTableSize(){
+		return arrsize;
+	}
 private:
 	int numToken;
 	int arrsize;

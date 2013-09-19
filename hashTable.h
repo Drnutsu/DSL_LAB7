@@ -71,19 +71,16 @@ public :
 
 	bool remove(T input){
 		int index = hashfunc(input,tablesize);
-		if(table->at(index).search(input)){
-			node<T> *old = table->at(index).start;
-			while(old->next->getdata() != input){
-				if(old == table->at(index).end && old->getdata() != input)return false;
-				old = old->next;
+		if(table->at(index).search(input)){ //ทำการค้นหาคำ ว่ามีอยู่จริงหรือไม่
+			node<T> *old = table->at(index).start; // เก็บ node เก่า
+			while(old->next->getdata() != input){ //เลื่อน node ไปจนถึงตัวก่อนที่จะทำการลบ
+				old = old->next; 
 			}
-			node<T> *temp = old->next;
-			if(temp->next != table->at(index).end){
+			node<T> *temp = old->next; //เก็บตัวที่จะลบ
 			old->next = temp->next;
 			delete temp;
 			numToken--;
 			return true;
-			}else return false;
 		}else return false;
 	}
 
